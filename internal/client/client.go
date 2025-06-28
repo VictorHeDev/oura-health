@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/VictorHeDev/oura-health/internal/models"
 )
 
 type OuraClient struct {
@@ -11,15 +13,7 @@ type OuraClient struct {
 }
 
 type DailyActivityResponse struct {
-	Data []DailyActivity `json:"data"`
-}
-
-type DailyActivity struct {
-	Date        string  `json:"date"`
-	Steps       int     `json:"steps"`
-	Calories    int     `json:"calories"`
-	ActiveTime  float64 `json:"active_time"`
-	RestingTime float64 `json:"resting_time"`
+	Data []models.DailyActivity `json:"data"`
 }
 
 func NewOuraClient(ouraToken string) *OuraClient {

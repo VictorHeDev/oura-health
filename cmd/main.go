@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/VictorHeDev/oura-health/internal/client"
 	"github.com/VictorHeDev/oura-health/internal/config"
@@ -26,5 +27,13 @@ func main() {
 	}
 
 	// Print daily activity data
-	fmt.Printf("Daily Activity Data: %+v\n", dailyActivity)
+	for _, activity := range dailyActivity.Data {
+		fmt.Printf("📅 Date: %s\n", activity.Day)
+		fmt.Printf("🚶 Steps: %d\n", activity.Steps)
+		fmt.Printf("🔥 Active Calories: %d\n", activity.ActiveCalories)
+		fmt.Printf("🛌 Resting Time (min): %d\n", activity.RestingTime/60)
+		fmt.Printf("⚡ Score: %d\n", activity.Score)
+		fmt.Println(strings.Repeat("-", 30))
+	}
+
 }

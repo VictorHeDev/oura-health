@@ -16,6 +16,12 @@ Since I will be accessing my own personal data, I can use a Personal Access Toke
     Authorization: Bearer <token>
     ```
 
+Set your own personal access token into the `.env.example` file and simply copy it over to an `.env` file. Be sure not to commit your actual personal access token.
+
+```bash
+cp .env.example .env
+```
+
 ### Webhooks
 - Set up webhooks to consume Oura data whenever there are new notications available
 - Make a single request for historical data when a user first connects, then use webhooks for ongoing updates
@@ -41,5 +47,12 @@ Since I will be accessing my own personal data, I can use a Personal Access Toke
 2. Implement pagination
 3. Consider running historical data collection as a bg job
 4. Store data in your own DB to avoid repeated API calls
+
+### Best practices for data access
+- initial load: pull all historical data
+- ongoing updates: use webhooks for all subsequent data updates
+- webhook integration - minimize the number of API calls and ensure that you always have the latest data
+- error handling: deal with occassional gaps of data when user does not sync their ring
+
 
 
